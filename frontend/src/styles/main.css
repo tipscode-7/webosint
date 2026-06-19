@@ -262,3 +262,113 @@ button[type="submit"]:active {
   border-radius: 4px;
   color: #fff;
 }
+/* Блок с иконками соцсетей */
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px; /* отступ перед формой */
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.social-icon:hover {
+  background: #1a1a1a;
+  transform: scale(1.05);
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Ссылка "Уже есть аккаунт?" – внизу формы */
+.bottom-link {
+  margin-top: 16px;
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a {
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a:hover {
+  text-decoration: underline;
+}
+
+/* Блок с иконками соцсетей — расстояние 50px */
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 50px;  /* было 12px */
+  margin-bottom: 24px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.social-icon:hover {
+  background: #1a1a1a;
+  transform: scale(1.05);
+}
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Кнопка регистрации — меньший шрифт */
+button.register-btn {
+  width: 165px;
+  height: 30px;
+  background: #000000;
+  color: #6D6868;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;   /* был 16px — уменьшили */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+button.register-btn:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+button.register-btn:active {
+  transform: scale(0.98);
+}
+
+/* Ссылка "Уже есть аккаунт?" — как в логине */
+.bottom-link {
+  margin-top: 16px;
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a {
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a:hover {
+  text-decoration: underline;
+}
