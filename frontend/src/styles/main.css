@@ -88,8 +88,8 @@ input[type="password"] {
   border: none;
   border-radius: 10px;
   color: #6D6868;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 15px;
   outline: none;
   transition: box-shadow 0.3s ease;
 }
@@ -105,7 +105,7 @@ input[type="password"]:focus {
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .checkbox-group label {
@@ -152,14 +152,14 @@ input[type="password"]:focus {
 }
 
 button[type="submit"] {
-  width: 165px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   background: #000000;
   color: #6D6868;
   border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 16px;
+  border-radius: 7px;
+  font-weight: 400;
+  font-size: 15px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   letter-spacing: 0.5px;
@@ -295,8 +295,8 @@ button[type="submit"]:active {
 }
 
 button.register-btn {
-  width: 165px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   background: #000000;
   color: #6D6868;
   border: none;
@@ -503,14 +503,14 @@ button.register-btn:active {
 
 /* Кнопка восстановления пароля */
 button.forgot-btn {
-  width: 165px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
   background: #000000;
   color: #6D6868;
   border: none;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 15px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   letter-spacing: 0.5px;
