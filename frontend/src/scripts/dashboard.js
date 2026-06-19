@@ -123,3 +123,14 @@ langBtns.forEach(btn => {
 
 // Установить язык по умолчанию (ru)
 setDashboardLanguage('ru');
+
+// Проверка авторизации и подписки
+if (!localStorage.getItem('access_token')) {
+  window.location.href = '/login.html';
+}
+const subType = localStorage.getItem('subscription_type') || 'free';
+const until = localStorage.getItem('subscription_until');
+const isActive = until ? new Date(until) > new Date() : false;
+if (subType !== 'admin' && (subType === 'free' || !isActive)) {
+  window.location.href = '/pricing.html';
+}

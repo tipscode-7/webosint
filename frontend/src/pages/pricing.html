@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Выбор подписки</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <!-- Переключатель языков -->
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="ru">
+      <img src="../assets/ru-flag.png" alt="RU" width="15" height="10" />
+    </button>
+    <button class="lang-btn" data-lang="en">
+      <img src="../assets/en-flag.png" alt="EN" width="15" height="10" />
+    </button>
+  </div>
+
+  <div class="wrapper pricing-wrapper">
+    <div class="container pricing-container">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Логотип проекта" />
+      </div>
+      <!-- Сетка карточек (без скролла) -->
+      <div class="pricing-grid">
+        <!-- Карточка 1: Free -->
+        <div class="pricing-card-h">
+          <div class="card-top-panel">
+            <div class="card-title">Free</div>
+            <div class="card-price">0 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Базовый доступ</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="free" disabled>Текущий</button>
+        </div>
+
+        <!-- Карточка 2: 1 Day -->
+        <div class="pricing-card-h">
+          <div class="card-top-panel">
+            <div class="card-title">1 Day</div>
+            <div class="card-price">99 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Пробный период</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="1d">Buy</button>
+        </div>
+
+        <!-- Карточка 3: 1 Week -->
+        <div class="pricing-card-h">
+          <div class="card-top-panel">
+            <div class="card-title">1 Week</div>
+            <div class="card-price">499 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Полный функционал</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="1w">Buy</button>
+        </div>
+
+        <!-- Карточка 4: 1 Month -->
+        <div class="pricing-card-h">
+          <div class="card-top-panel">
+            <div class="card-title">1 Month</div>
+            <div class="card-price">1499 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Оптимальный выбор</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="1m">Buy</button>
+        </div>
+
+        <!-- Карточка 5: 1 Year -->
+        <div class="pricing-card-h">
+          <div class="card-top-panel">
+            <div class="card-title">1 Year</div>
+            <div class="card-price">9999 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Экономия 30%</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="1y">Buy</button>
+        </div>
+
+        <!-- Карточка 6: Infinity -->
+        <div class="pricing-card-h featured">
+          <div class="card-top-panel">
+            <div class="card-title">Infinity</div>
+            <div class="card-price">19999 ₽ <span class="per-month">/мес</span></div>
+            <div class="card-desc">Безлимит навсегда</div>
+          </div>
+          <div class="card-image" style="background-image: url('../assets/subs.png');"></div>
+          <button class="card-btn" data-plan="inf">Buy</button>
+        </div>
+      </div>
+
+      <div class="bottom-link">
+        <a href="/login.html">Выйти</a>
+      </div>
+    </div>
+
+    <!-- Футер -->
+    <div class="footer">
+      <div class="footer-content">
+        <span class="copyright">2026 Jeos. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../scripts/pricing.js"></script>
+</body>
+</html>

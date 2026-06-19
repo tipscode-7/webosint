@@ -16,22 +16,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = '/dashboard.html';
   }
 
-  const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      try {
-        const res = await api.post('/login/', { email, password });
-        localStorage.setItem('access_token', res.data.access);
-        localStorage.setItem('refresh_token', res.data.refresh);
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
+      const res = await api.post('/login/', { email, password });
+      localStorage.setItem('access_token', res.data.access);
+      localStorage.setItem('refresh_token', res.data.refresh);
+      // Получаем профиль пользователя
+      const profileRes = await api.get('/profile/');
+      const user = profileRes.data;
+      // Проверяем подписку
+      const subscription = user.subscription_type || 'free';
+      const until = user.subscription_until ? new Date(user.subscription_until) : null;
+      const now = new Date();
+      const isActive = until ? until > now : false;
+      // Сохраняем данные в localStorage для быстрого доступа
+      localStorage.setItem('subscription_type', subscription);
+      localStorage.setItem('subscription_until', user.subscription_until || '');
+      // Если подписка активна или пользователь admin - пускаем
+      if (subscription === 'admin' || (subscription !== 'free' && isActive)) {
         window.location.href = '/dashboard.html';
-      } catch (err) {
-        alert('Ошибка входа: ' + (err.response?.data?.detail || 'Неизвестная ошибка'));
+      } else {
+        window.location.href = '/pricing.html';
       }
-    });
-  }
+    } catch (err) {
+      alert('Ошибка входа: ' + (err.response?.data?.detail || 'Неизвестная ошибка'));
+    }
+  });
+}
 
   const registerForm = document.getElementById('registerForm');
   if (registerForm) {

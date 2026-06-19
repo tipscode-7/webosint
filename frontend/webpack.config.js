@@ -51,5 +51,10 @@ module.exports = {
       filename: 'forgot-password.html',
       chunks: ['main'],
     }),
+    new HtmlWebpackPlugin({
+  template: './src/pages/pricing.html',
+  filename: 'pricing.html',
+  chunks: ['main'],
+}),
   ],
 };

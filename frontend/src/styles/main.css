@@ -523,3 +523,118 @@ button.forgot-btn:hover {
 button.forgot-btn:active {
   transform: scale(0.98);
 }
+
+/* ===== PRICING (без скролла, блоки переносятся) ===== */
+.pricing-wrapper {
+  background: #0d0d0d;
+}
+
+.pricing-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.pricing-grid {
+  display: flex;
+  flex-wrap: wrap;          /* перенос на новую строку */
+  justify-content: center;  /* центрирование по горизонтали */
+  gap: 20px;               /* расстояние между карточками */
+  margin: 20px 0;
+}
+
+/* Карточка – вертикальный стек */
+.pricing-card-h {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 255px;
+  flex-shrink: 0;
+}
+
+/* Верхняя панель */
+.card-top-panel {
+  width: 255px;
+  height: 51px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  border-radius: 6px;
+  padding: 6px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* отступ от картинки */
+}
+
+.card-title {
+  font-size: 10px;
+  color: #FFFFFF;
+  font-weight: 600;
+  order: 1;
+  flex: 1 1 100%;
+  text-align: left;
+}
+
+.card-price {
+  font-size: 10px;
+  color: #FFFFFF;
+  font-weight: 600;
+  order: 2;
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+.card-price .per-month {
+  font-size: 6px;
+  color: #6D6868;
+  font-weight: 300;
+}
+
+.card-desc {
+  font-size: 6px;
+  color: #6D6868;
+  order: 3;
+  flex: 1 1 100%;
+  text-align: left;
+  margin-top: -2px;
+}
+
+/* Картинка (фон) */
+.card-image {
+  width: 255px;
+  height: 455px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 10px; /* отступ до кнопки */
+}
+
+/* Кнопка */
+.card-btn {
+  width: 255px;
+  height: 35px;
+  background: #000000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.card-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+}
+
+.card-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Карточка "Infinity" с подсветкой */
+.pricing-card-h.featured .card-image {
+  box-shadow: 0 0 20px rgba(109,104,104,0.3);
+}
