@@ -1,19 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Вход</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/main.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Вход</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Пароль" required>
-      <button type="submit">Войти</button>
-    </form>
-    <a href="/register.html">Нет аккаунта? Зарегистрироваться</a>
+  <div class="wrapper">
+    <div class="container">
+      <!-- Логотип -->
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Логотип проекта" />
+      </div>
+
+      <!-- Ссылки "Забыл пароль?" и "Зарегистрироваться" (над полем email) -->
+      <div class="top-links">
+        <a href="/forgot-password.html" class="forgot-link">Забыл пароль?</a>
+        <a href="/register.html" class="register-link">Зарегистрироваться</a>
+      </div>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Пароль" required />
+
+        <!-- Чекбокс -->
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="agree" required />
+            <span>Я принимаю пользовательское соглашение Terms of Service и политику конфиденциальности проекта.</span>
+          </label>
+        </div>
+
+        <button type="submit">Войти</button>
+      </form>
+    </div>
+
+    <!-- Футер – прижат к низу экрана, находится вне .container -->
+    <div class="footer">
+      <div class="footer-content">
+        <span class="copyright">2026 Jeos. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <script src="../scripts/auth.js"></script>
+
+  <script type="module" src="../scripts/auth.js"></script>
 </body>
 </html>
