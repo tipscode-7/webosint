@@ -178,6 +178,16 @@ const forgotBackLink = document.querySelector('.bottom-link a');
 if (forgotBackLink) forgotBackLink.textContent = t.forgotBack;
 });
 
+// Кнопка выхода (верхняя правая)
+const logoutTopBtn = document.getElementById('logoutTopBtn');
+if (logoutTopBtn) {
+  logoutTopBtn.addEventListener('click', () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    window.location.href = '/login.html';
+  });
+}
+
 // --- Восстановление пароля ---
 const forgotForm = document.getElementById('forgotForm');
 if (forgotForm) {

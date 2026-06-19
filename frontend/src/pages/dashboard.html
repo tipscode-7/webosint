@@ -8,31 +8,55 @@
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
 <body>
+  <!-- Кнопка выхода (справа в углу) -->
+  <button class="logout-top-btn" id="logoutTopBtn">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
+
   <div class="dashboard-wrapper">
-    <aside class="sidebar">
+    <!-- Верхняя панель: профиль (горизонтально) -->
+    <div class="dashboard-topbar">
       <div class="profile-section">
         <img src="../assets/profile-icon.png" alt="Profile" class="profile-avatar" />
         <div class="user-info">
-          <div class="session-time" id="sessionTime">session: 0h:0min:0sec</div>
           <div class="username">Иван Петров</div>
           <div class="user-role">Администратор</div>
+          <div class="session-time" id="sessionTime">session: 0h:0min:0sec</div>
         </div>
       </div>
+    </div>
 
-      <nav class="menu-buttons">
-        <button class="menu-btn"><i class="fas fa-search"></i> Поиск</button>
-        <button class="menu-btn"><i class="fas fa-eye"></i> Слежка</button>
-        <button class="menu-btn"><i class="fas fa-history"></i> История поиска</button>
-        <button class="menu-btn"><i class="fas fa-cog"></i> Настройки</button>
-        <button class="menu-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
-      </nav>
+    <!-- Ряд кнопок меню -->
+    <div class="top-actions">
+      <button class="top-btn menu-btn active" data-page="main">
+        <i class="fas fa-home"></i>
+        <span>Главное меню</span>
+      </button>
+      <button class="top-btn menu-btn" data-page="search">
+        <i class="fas fa-search"></i>
+        <span>Поиск</span>
+      </button>
+      <button class="top-btn menu-btn" data-page="history">
+        <i class="fas fa-history"></i>
+        <span>История</span>
+      </button>
+      <button class="top-btn menu-btn" data-page="subscriptions">
+        <i class="fas fa-credit-card"></i>
+        <span>Подписки</span>
+      </button>
+      <button class="top-btn menu-btn" data-page="settings">
+        <i class="fas fa-cog"></i>
+        <span>Настройки</span>
+      </button>
+    </div>
 
-      <div class="version">Version BETA:0.0.01.</div>
-    </aside>
+    <!-- Центральная область (контент) -->
+    <div class="center-content" id="content-area">
+      <!-- Сюда будет рендериться содержимое -->
+    </div>
 
-    <main class="main-content">
-      <img src="../assets/logo.png" alt="Logo" class="main-logo" />
-    </main>
+    <!-- Версия внизу -->
+    <div class="main-version">Version BETA:0.0.01.</div>
   </div>
 
   <script type="module" src="../scripts/dashboard.js"></script>
