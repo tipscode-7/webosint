@@ -23,11 +23,10 @@ a:hover {
   color: #6D6868;
 }
 
-/* Wrapper — занимает всю высоту, флекс-колонка */
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* центрируем контейнер по вертикали */
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: #0d0d0d;
@@ -35,7 +34,6 @@ a:hover {
   position: relative;
 }
 
-/* Контейнер с формой — центрируется, но футер не в нём */
 .container {
   max-width: 400px;
   width: 100%;
@@ -44,10 +42,9 @@ a:hover {
   border: none;
   box-shadow: none;
   text-align: center;
-  flex-shrink: 0; /* чтобы не сжимался */
+  flex-shrink: 0;
 }
 
-/* Логотип */
 .logo {
   text-align: center;
   margin-bottom: 30px;
@@ -58,12 +55,11 @@ a:hover {
   display: inline-block;
 }
 
-/* Верхние ссылки (над полем email) — в одну строку, слева и справа */
 .top-links {
   display: flex;
   justify-content: space-between;
-  width: 323px; /* такая же ширина, как у полей */
-  margin: 0 auto 16px auto; /* отцентрированы, отступ снизу */
+  width: 323px;
+  margin: 0 auto 16px auto;
   font-size: 10px;
 }
 
@@ -75,7 +71,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Форма */
 form {
   display: flex;
   flex-direction: column;
@@ -84,7 +79,6 @@ form {
   width: 100%;
 }
 
-/* Поля ввода */
 input[type="email"],
 input[type="password"] {
   width: 323px;
@@ -105,7 +99,6 @@ input[type="password"]:focus {
   box-shadow: 0 0 0 2px #6D6868;
 }
 
-/* Чекбокс */
 .checkbox-group {
   width: 323px;
   display: flex;
@@ -158,7 +151,6 @@ input[type="password"]:focus {
   font-weight: bold;
 }
 
-/* Кнопка */
 button[type="submit"] {
   width: 165px;
   height: 30px;
@@ -183,7 +175,6 @@ button[type="submit"]:active {
   transform: scale(0.98);
 }
 
-/* Футер – фиксирован внизу, по центру */
 .footer {
   position: fixed;
   bottom: 20px;
@@ -193,7 +184,7 @@ button[type="submit"]:active {
   color: #6D6868;
   font-size: 10px;
   padding: 0 20px;
-  pointer-events: none; /* чтобы клики проходили сквозь фон, но ссылки оставались кликабельны */
+  pointer-events: none;
 }
 
 .footer-content {
@@ -201,7 +192,7 @@ button[type="submit"]:active {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  pointer-events: auto; /* восстанавливаем клики для содержимого */
+  pointer-events: auto;
 }
 
 .footer-links {
@@ -225,7 +216,6 @@ button[type="submit"]:active {
   color: #6D6868;
 }
 
-/* Остальные стили (для других страниц) — без изменений */
 .console {
   background: #1a1a1a;
   border: 1px solid #6D6868;
@@ -262,56 +252,11 @@ button[type="submit"]:active {
   border-radius: 4px;
   color: #fff;
 }
-/* Блок с иконками соцсетей */
+
 .social-login {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px; /* отступ перед формой */
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  background: #000000;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.social-icon:hover {
-  background: #1a1a1a;
-  transform: scale(1.05);
-}
-
-.social-icon img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-/* Ссылка "Уже есть аккаунт?" – внизу формы */
-.bottom-link {
-  margin-top: 16px;
-  font-size: 10px;
-  color: #6D6868;
-}
-.bottom-link a {
-  font-size: 10px;
-  color: #6D6868;
-}
-.bottom-link a:hover {
-  text-decoration: underline;
-}
-
-/* Блок с иконками соцсетей — расстояние 50px */
-.social-login {
-  display: flex;
-  justify-content: center;
-  gap: 50px;  /* было 12px */
+  gap: 50px;
   margin-bottom: 24px;
 }
 
@@ -336,7 +281,19 @@ button[type="submit"]:active {
   object-fit: contain;
 }
 
-/* Кнопка регистрации — меньший шрифт */
+.bottom-link {
+  margin-top: 16px;
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a {
+  font-size: 10px;
+  color: #6D6868;
+}
+.bottom-link a:hover {
+  text-decoration: underline;
+}
+
 button.register-btn {
   width: 165px;
   height: 30px;
@@ -345,7 +302,7 @@ button.register-btn {
   border: none;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 12px;   /* был 16px — уменьшили */
+  font-size: 12px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   letter-spacing: 0.5px;
@@ -359,16 +316,210 @@ button.register-btn:active {
   transform: scale(0.98);
 }
 
-/* Ссылка "Уже есть аккаунт?" — как в логине */
-.bottom-link {
-  margin-top: 16px;
-  font-size: 10px;
-  color: #6D6868;
+/* ===== DASHBOARD ===== */
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #080808;
+  overflow: hidden;
 }
-.bottom-link a {
-  font-size: 10px;
-  color: #6D6868;
+
+.sidebar {
+  width: 410px;
+  height: 960px;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  flex-shrink: 0;
+  position: relative;
 }
-.bottom-link a:hover {
-  text-decoration: underline;
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #1a1a1a;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.session-time {
+  font-size: 10px;
+  color: #929292;
+}
+
+.username {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.user-role {
+  font-size: 10px;
+  color: #929292;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.menu-btn {
+  width: 380px;
+  height: 50px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-align: left;
+  padding-left: 20px;
+  line-height: 50px;
+  padding-right: 20px;
+}
+.menu-btn:hover {
+  background: #1a1a1a;
+}
+.menu-btn:active {
+  transform: scale(0.98);
+}
+
+.version {
+  color: #929292;
+  font-size: 12px;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #080808;
+  padding: 20px;
+}
+
+.main-logo {
+  width: 220px;
+  height: 100px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+/* Группа поля с иконкой */
+.input-group {
+  position: relative;
+  width: 323px;
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  position: absolute;
+  left: 16px;
+  color: #6D6868;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.input-group input {
+  width: 100%;
+  height: 51px;
+  padding: 0 18px 0 50px;
+  background: #000000;
+  border: none;
+  border-radius: 10px;
+  color: #6D6868;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px #6D6868;
+}
+
+/* Переключатель языков */
+.lang-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  background: #000000;
+  padding: 5px 10px;
+  border-radius: 8px;
+  width: 60px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.lang-btn:hover {
+  opacity: 1;
+}
+.lang-btn.active {
+  opacity: 1;
+}
+.lang-btn img {
+  width: 15px;
+  height: 10px;
+  display: block;
+}
+
+/* Кнопка восстановления пароля */
+button.forgot-btn {
+  width: 165px;
+  height: 30px;
+  background: #000000;
+  color: #6D6868;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+button.forgot-btn:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+button.forgot-btn:active {
+  transform: scale(0.98);
 }

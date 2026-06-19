@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Панель управления</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>OSINT Агент</h1>
-    <div class="search-area">
-      <input type="text" id="searchInput" placeholder="Введите IP, телефон или ссылку..." />
-      <button id="searchBtn">Найти</button>
-    </div>
-    <div id="console" class="console">
-      <div class="line">> Добро пожаловать! Введите данные для поиска.</div>
-    </div>
-    <button id="logoutBtn" style="margin-top:20px;">Выйти</button>
+  <div class="dashboard-wrapper">
+    <aside class="sidebar">
+      <div class="profile-section">
+        <img src="../assets/profile-icon.png" alt="Profile" class="profile-avatar" />
+        <div class="user-info">
+          <div class="session-time" id="sessionTime">session: 0h:0min:0sec</div>
+          <div class="username">Иван Петров</div>
+          <div class="user-role">Администратор</div>
+        </div>
+      </div>
+
+      <nav class="menu-buttons">
+        <button class="menu-btn"><i class="fas fa-search"></i> Поиск</button>
+        <button class="menu-btn"><i class="fas fa-eye"></i> Слежка</button>
+        <button class="menu-btn"><i class="fas fa-history"></i> История поиска</button>
+        <button class="menu-btn"><i class="fas fa-cog"></i> Настройки</button>
+        <button class="menu-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
+      </nav>
+
+      <div class="version">Version BETA:0.0.01.</div>
+    </aside>
+
+    <main class="main-content">
+      <img src="../assets/logo.png" alt="Logo" class="main-logo" />
+    </main>
   </div>
+
   <script type="module" src="../scripts/dashboard.js"></script>
 </body>
 </html>
