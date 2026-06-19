@@ -1,1 +1,99 @@
 body { background: #0d0d0d; color: #00ffcc; font-family: 'Courier New', monospace; }
+body {
+  background: #0d0d0d;
+  color: #00ffcc;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  background: #111;
+}
+
+h1, h2 {
+  color: #00ffcc;
+  text-align: center;
+}
+
+.search-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 10px;
+  background: #1a1a1a;
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  font-family: 'Courier New', monospace;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #00ffcc;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+button:hover {
+  background: #00ddbb;
+}
+
+.console {
+  background: #1a1a1a;
+  border: 1px solid #00ffcc;
+  border-radius: 4px;
+  padding: 10px;
+  height: 400px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #00ffcc;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.console .line {
+  margin: 2px 0;
+  padding: 2px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.console .line.info {
+  color: #00ffcc;
+}
+
+.console .line.warning {
+  color: #ffcc00;
+}
+
+.console .line.success {
+  color: #00ff88;
+}
+
+.console .line.error {
+  color: #ff4444;
+}
+
+input, button {
+  outline: none;
+}
+
+a {
+  color: #00ffcc;
+  text-decoration: underline;
+  cursor: pointer;
+}
