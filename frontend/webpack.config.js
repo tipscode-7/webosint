@@ -68,5 +68,17 @@ module.exports = {
       template: './src/pages/verify-code.html',
       filename: 'verify-code.html',
     }),
+    new HtmlWebpackPlugin({
+  template: './src/pages/privacy-policy.html',
+  filename: 'privacy-policy.html',
+}),
+new HtmlWebpackPlugin({
+  template: './src/pages/terms-of-use.html',
+  filename: 'terms-of-use.html',
+}),
+new HtmlWebpackPlugin({
+  template: './src/pages/contact-us.html',
+  filename: 'contact-us.html',
+}),
   ],
 };
