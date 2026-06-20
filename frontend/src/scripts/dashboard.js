@@ -13,161 +13,67 @@ if (subType !== 'admin' && (subType === 'free' || !isActive)) {
   window.location.href = '/pricing.html';
 }
 
-// --- Время сессии ---
-const startTime = Date.now();
-const sessionTimeEl = document.getElementById('sessionTime');
-
-function updateSessionTime() {
-  if (!sessionTimeEl) return;
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  const hours = Math.floor(elapsed / 3600);
-  const minutes = Math.floor((elapsed % 3600) / 60);
-  const seconds = elapsed % 60;
-  sessionTimeEl.textContent =
-    `session: ${hours}h:${String(minutes).padStart(2, '0')}min:${String(seconds).padStart(2, '0')}sec`;
-}
-updateSessionTime();
-setInterval(updateSessionTime, 1000);
-
-// --- Кнопка выхода ---
-const logoutTopBtn = document.getElementById('logoutTopBtn');
-if (logoutTopBtn) {
-  logoutTopBtn.addEventListener('click', () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    window.location.href = '/login.html';
-  });
-}
-
-// --- Данные новостей (по умолчанию 4 новости) ---
-const defaultNews = [
-  {
-    id: 1,
-    title: 'Запуск нового ИИ-агента',
-    description: 'Мы обновили алгоритмы поиска. Теперь агент находит информацию в 2 раза быстрее и точнее.',
-    image: 'https://picsum.photos/seed/ai/800/400',
-    reactions: { like: 12, dislike: 2, fire: 5, heart: 8, people: 3, poop: 1, crown: 0 }
-  },
-  {
-    id: 2,
-    title: 'Обновление безопасности',
-    description: 'Внедрена двухфакторная аутентификация для всех пользователей. Защита данных усилена.',
-    image: 'https://picsum.photos/seed/security/800/400',
-    reactions: { like: 24, dislike: 1, fire: 10, heart: 15, people: 7, poop: 0, crown: 2 }
-  },
-  {
-    id: 3,
-    title: 'Новая функция: слежка в реальном времени',
-    description: 'Теперь вы можете отслеживать изменения по заданным параметрам в реальном времени.',
-    image: 'https://picsum.photos/seed/tracking/800/400',
-    reactions: { like: 8, dislike: 4, fire: 3, heart: 5, people: 2, poop: 1, crown: 0 }
-  },
-  {
-    id: 4,
-    title: 'Интеграция с Telegram',
-    description: 'Теперь вы можете получать уведомления о найденной информации прямо в Telegram-бот.',
-    image: 'https://picsum.photos/seed/telegram/800/400',
-    reactions: { like: 3, dislike: 0, fire: 7, heart: 2, people: 1, poop: 0, crown: 0 }
-  }
-];
-
-// Загружаем новости из localStorage
-let newsData = [];
-const saved = localStorage.getItem('newsData');
-if (saved) {
-  try {
-    const parsed = JSON.parse(saved);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      newsData = parsed;
-    } else {
-      newsData = JSON.parse(JSON.stringify(defaultNews));
-      localStorage.setItem('newsData', JSON.stringify(newsData));
-    }
-  } catch (e) {
-    newsData = JSON.parse(JSON.stringify(defaultNews));
-    localStorage.setItem('newsData', JSON.stringify(newsData));
-  }
-} else {
-  newsData = JSON.parse(JSON.stringify(defaultNews));
-  localStorage.setItem('newsData', JSON.stringify(newsData));
-}
-
-// --- Рендеринг главной страницы (новости) ---
+// --- Рендеринг главной страницы (только поиск и уведомления) ---
 function renderMainPage() {
   const contentArea = document.getElementById('content-area');
   if (!contentArea) return;
 
   contentArea.innerHTML = '';
 
-  const feed = document.createElement('div');
-  feed.className = 'news-feed';
+  // --- Блок поиска и уведомлений ---
+  const searchBlock = document.createElement('div');
+  searchBlock.className = 'main-search-block';
 
-  newsData.forEach(news => {
-    const card = document.createElement('div');
-    card.className = 'news-card';
+  // Поле ввода
+  const inputGroup = document.createElement('div');
+  inputGroup.className = 'main-search-input-group';
 
-    const img = document.createElement('img');
-    img.src = news.image;
-    img.alt = news.title;
-    card.appendChild(img);
+  const searchIcon = document.createElement('i');
+  searchIcon.className = 'fas fa-search search-icon-left';
+  inputGroup.appendChild(searchIcon);
 
-    const body = document.createElement('div');
-    body.className = 'news-body';
+  const searchInput = document.createElement('input');
+  searchInput.type = 'text';
+  searchInput.placeholder = 'Введите что хотите найти...';
+  searchInput.className = 'main-search-input';
+  inputGroup.appendChild(searchInput);
 
-    const title = document.createElement('div');
-    title.className = 'news-title';
-    title.textContent = news.title;
-    body.appendChild(title);
+  const searchBtn = document.createElement('button');
+  searchBtn.className = 'main-search-btn';
+  searchBtn.innerHTML = '<i class="fas fa-search"></i> Искать';
+  inputGroup.appendChild(searchBtn);
 
-    const desc = document.createElement('div');
-    desc.className = 'news-description';
-    desc.textContent = news.description;
-    body.appendChild(desc);
+  searchBlock.appendChild(inputGroup);
 
-    const reactionsDiv = document.createElement('div');
-    reactionsDiv.className = 'reactions';
+  // Кнопка уведомлений
+  const notifBtn = document.createElement('button');
+  notifBtn.className = 'main-notif-btn';
+  notifBtn.innerHTML = '<i class="fas fa-bell"></i>';
+  const badge = document.createElement('span');
+  badge.className = 'notif-badge';
+  badge.textContent = '3'; // заглушка, позже можно заменить на реальное число
+  notifBtn.appendChild(badge);
+  searchBlock.appendChild(notifBtn);
 
-    const reactionList = [
-      { key: 'like', icon: 'fa-thumbs-up' },
-      { key: 'dislike', icon: 'fa-thumbs-down' },
-      { key: 'fire', icon: 'fa-fire' },
-      { key: 'heart', icon: 'fa-heart' },
-      { key: 'people', icon: 'fa-people-group' },
-      { key: 'poop', icon: 'fa-poo' },
-      { key: 'crown', icon: 'fa-crown' }
-    ];
+  contentArea.appendChild(searchBlock);
 
-    reactionList.forEach(reaction => {
-      const btn = document.createElement('button');
-      btn.className = 'reaction-btn';
-      btn.dataset.reaction = reaction.key;
-      btn.dataset.newsId = news.id;
-
-      const icon = document.createElement('i');
-      icon.className = `fas ${reaction.icon}`;
-      btn.appendChild(icon);
-
-      const countSpan = document.createElement('span');
-      countSpan.className = 'count';
-      countSpan.textContent = news.reactions[reaction.key] || 0;
-      btn.appendChild(countSpan);
-
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        news.reactions[reaction.key] = (news.reactions[reaction.key] || 0) + 1;
-        countSpan.textContent = news.reactions[reaction.key];
-        localStorage.setItem('newsData', JSON.stringify(newsData));
-      });
-
-      reactionsDiv.appendChild(btn);
-    });
-
-    body.appendChild(reactionsDiv);
-    card.appendChild(body);
-    feed.appendChild(card);
+  // --- Обработчики для поиска и уведомлений ---
+  searchBtn.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+    if (!query) {
+      alert('Введите поисковый запрос');
+      return;
+    }
+    alert(`🔍 Поиск: "${query}" (заглушка)`);
   });
 
-  contentArea.appendChild(feed);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') searchBtn.click();
+  });
+
+  notifBtn.addEventListener('click', () => {
+    alert('🔔 У вас 3 новых уведомления (заглушка)');
+  });
 }
 
 // --- Рендеринг страницы "Поиск" ---
@@ -175,18 +81,14 @@ function renderSearchPage() {
   const contentArea = document.getElementById('content-area');
   if (!contentArea) return;
 
-  // Очищаем контейнер
   contentArea.innerHTML = '';
 
-  // Основной контейнер поиска
   const wrapper = document.createElement('div');
   wrapper.className = 'search-wrapper';
 
-  // Левая колонка: поля ввода
   const fieldsContainer = document.createElement('div');
   fieldsContainer.className = 'search-fields';
 
-  // Массив полей (placeholder, icon)
   const fieldsData = [
     { placeholder: 'Введите ФИО...', icon: 'fa-user' },
     { placeholder: 'Введите почту...', icon: 'fa-envelope' },
@@ -228,18 +130,15 @@ function renderSearchPage() {
 
   wrapper.appendChild(fieldsContainer);
 
-  // Правая часть: консоль + кнопка
   const rightBlock = document.createElement('div');
   rightBlock.style.display = 'flex';
   rightBlock.style.flexDirection = 'column';
   rightBlock.style.alignItems = 'flex-start';
   rightBlock.style.gap = '10px';
 
-  // Консоль
   const consoleWrapper = document.createElement('div');
   consoleWrapper.className = 'console-wrapper';
 
-  // Заголовок консоли
   const header = document.createElement('div');
   header.className = 'console-header';
   header.innerHTML = `
@@ -249,7 +148,6 @@ function renderSearchPage() {
   `;
   consoleWrapper.appendChild(header);
 
-  // Окно вывода
   const output = document.createElement('div');
   output.className = 'console-output';
   output.id = 'consoleOutput';
@@ -257,7 +155,6 @@ function renderSearchPage() {
 
   rightBlock.appendChild(consoleWrapper);
 
-  // Кнопка "Найти"
   const searchBtn = document.createElement('button');
   searchBtn.className = 'search-btn';
   searchBtn.textContent = 'Найти';
@@ -267,12 +164,9 @@ function renderSearchPage() {
   wrapper.appendChild(rightBlock);
   contentArea.appendChild(wrapper);
 
-  // Приветственное сообщение в консоль
   addConsoleMessage('Добро пожаловать в консоль поиска. Введите данные и нажмите "Найти".');
 
-  // Обработчик кнопки "Найти"
   searchBtn.addEventListener('click', () => {
-    // Собираем все заполненные поля
     const inputs = document.querySelectorAll('.search-input');
     const values = [];
     inputs.forEach(inp => {
@@ -285,14 +179,12 @@ function renderSearchPage() {
       return;
     }
     addConsoleMessage(`🔍 Запуск поиска по: ${values.join(', ')}`);
-    // Здесь можно добавить имитацию поиска
     setTimeout(() => {
       addConsoleMessage('✅ Поиск завершён. Найдено 0 результатов (заглушка).');
     }, 1500);
   });
 }
 
-// --- Вспомогательная функция для добавления сообщений в консоль ---
 function addConsoleMessage(text) {
   const output = document.getElementById('consoleOutput');
   if (!output) return;
@@ -300,7 +192,6 @@ function addConsoleMessage(text) {
   const line = document.createElement('div');
   line.className = 'console-line';
 
-  // Текущая дата в формате 2026/12/53:18/30/50 (пример)
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -324,20 +215,22 @@ function addConsoleMessage(text) {
   output.scrollTop = output.scrollHeight;
 }
 
-import { showLoader, hideLoader } from './loader.js';
+// --- Обработка иконок (луна, настройки, выход) ---
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+  alert('Смена темы (заглушка)');
+});
 
-// ... внутри обработчика регистрации
-try {
-  showLoader();
-  await api.post('/register/', { email, username, password });
-  hideLoader();
-  window.location.href = '/verify-code.html';
-} catch (err) {
-  hideLoader();
-  alert('Ошибка регистрации');
-}
+document.getElementById('settingsBtn')?.addEventListener('click', () => {
+  alert('Настройки (заглушка)');
+});
 
-// --- Переключение вкладок ---
+document.getElementById('logoutSidebarBtn')?.addEventListener('click', () => {
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+  window.location.href = '/login.html';
+});
+
+// --- Переключение вкладок меню ---
 const menuBtns = document.querySelectorAll('.menu-btn');
 const contentArea = document.getElementById('content-area');
 
@@ -356,14 +249,35 @@ menuBtns.forEach(btn => {
       case 'search':
         renderSearchPage();
         break;
-      case 'history':
-        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">📜 История поиска (в разработке)</div>`;
+      case 'profiles':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">👤 Профили (в разработке)</div>`;
         break;
-      case 'subscriptions':
-        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">💳 Управление подписками (в разработке)</div>`;
+      case 'phones':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">📱 Телефоны (в разработке)</div>`;
         break;
-      case 'settings':
-        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">⚙️ Настройки (в разработке)</div>`;
+      case 'social':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">🌐 Соц. сети (в разработке)</div>`;
+        break;
+      case 'address':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">📍 Адрес (в разработке)</div>`;
+        break;
+      case 'documents':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">📄 Документы (в разработке)</div>`;
+        break;
+      case 'finance':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">💰 Финансы (в разработке)</div>`;
+        break;
+      case 'transport':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">🚗 Транспорт (в разработке)</div>`;
+        break;
+      case 'courts':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">⚖️ Судебные дела (в разработке)</div>`;
+        break;
+      case 'databases':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">🗄️ Базы данных (в разработке)</div>`;
+        break;
+      case 'monitoring':
+        contentArea.innerHTML = `<div style="color:#929292; font-size:20px; text-align:center; margin-top:50px;">👁️ Мониторинг (в разработке)</div>`;
         break;
       default:
         contentArea.innerHTML = '';

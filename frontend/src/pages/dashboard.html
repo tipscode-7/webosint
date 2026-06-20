@@ -8,55 +8,71 @@
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
 <body>
-  <!-- Кнопка выхода (справа в углу) -->
-  <button class="logout-top-btn" id="logoutTopBtn">
-    <i class="fas fa-sign-out-alt"></i>
-  </button>
-
   <div class="dashboard-wrapper">
-    <!-- Верхняя панель: профиль (горизонтально) -->
-    <div class="dashboard-topbar">
-      <div class="profile-section">
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+      <!-- Верхняя часть: только логотип -->
+      <div class="sidebar-top">
+        <img src="../assets/logo.png" alt="Logo" class="sidebar-logo" />
+      </div>
+
+      <!-- Меню -->
+      <nav class="sidebar-menu">
+        <button class="menu-btn active" data-page="main"><i class="fas fa-home"></i> Главная</button>
+        <button class="menu-btn" data-page="search"><i class="fas fa-search"></i> Поиск</button>
+        <button class="menu-btn" data-page="profiles"><i class="fas fa-user"></i> Профили</button>
+        <button class="menu-btn" data-page="phones"><i class="fas fa-phone"></i> Телефоны</button>
+        <button class="menu-btn" data-page="social"><i class="fas fa-share-alt"></i> Соц. сети</button>
+        <button class="menu-btn" data-page="address"><i class="fas fa-map-marker-alt"></i> Адрес</button>
+        <button class="menu-btn" data-page="documents"><i class="fas fa-file"></i> Документ</button>
+        <button class="menu-btn" data-page="finance"><i class="fas fa-coins"></i> Финансы</button>
+        <button class="menu-btn" data-page="transport"><i class="fas fa-car"></i> Транспорт</button>
+        <button class="menu-btn" data-page="courts"><i class="fas fa-gavel"></i> Судебные дела</button>
+        <button class="menu-btn" data-page="databases"><i class="fas fa-database"></i> Базы данных</button>
+        <button class="menu-btn" data-page="monitoring"><i class="fas fa-eye"></i> Мониторинг</button>
+      </nav>
+
+      <!-- Блок подписки -->
+      <div class="subscription-block">
+        <div class="sub-header">
+          <span class="sub-label">ТАРИФ:</span>
+          <span class="sub-plan">PREMIUM</span>
+        </div>
+        <div class="sub-days">
+          <span class="sub-days-label">Осталось дней:</span>
+          <span class="sub-days-count">134</span>
+          <span class="sub-days-total">/500</span>
+        </div>
+        <div class="sub-progress">
+          <div class="sub-progress-bar" style="width: 26.8%;"></div>
+        </div>
+        <button class="sub-upgrade-btn">Улучшить тариф</button>
+      </div>
+
+      <!-- Блок профиля -->
+      <div class="profile-block">
         <img src="../assets/profile-icon.png" alt="Profile" class="profile-avatar" />
-        <div class="user-info">
-          <div class="username">Иван Петров</div>
-          <div class="user-role">Администратор</div>
-          <div class="session-time" id="sessionTime">session: 0h:0min:0sec</div>
+        <div class="profile-info">
+          <div class="profile-username">Иван Петров</div>
+          <div class="profile-role">Администратор</div>
         </div>
       </div>
-    </div>
 
-    <!-- Ряд кнопок меню -->
-    <div class="top-actions">
-      <button class="top-btn menu-btn active" data-page="main">
-        <i class="fas fa-home"></i>
-        <span>Главное меню</span>
-      </button>
-      <button class="top-btn menu-btn" data-page="search">
-        <i class="fas fa-search"></i>
-        <span>Поиск</span>
-      </button>
-      <button class="top-btn menu-btn" data-page="history">
-        <i class="fas fa-history"></i>
-        <span>История</span>
-      </button>
-      <button class="top-btn menu-btn" data-page="subscriptions">
-        <i class="fas fa-credit-card"></i>
-        <span>Подписки</span>
-      </button>
-      <button class="top-btn menu-btn" data-page="settings">
-        <i class="fas fa-cog"></i>
-        <span>Настройки</span>
-      </button>
-    </div>
+      <!-- Иконки (луна, настройки, выход) внизу -->
+      <div class="sidebar-bottom">
+        <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" id="settingsBtn"><i class="fas fa-cog"></i></button>
+        <button class="icon-btn" id="logoutSidebarBtn"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
 
-    <!-- Центральная область (контент) -->
-    <div class="center-content" id="content-area">
-      <!-- Сюда будет рендериться содержимое -->
-    </div>
+      <!-- Версия -->
+      <div class="sidebar-version">version:0.0.1</div>
+    </aside>
 
-    <!-- Версия внизу -->
-    <div class="main-version">Version BETA:0.0.01.</div>
+    <!-- Основная область -->
+    <main class="main-content">
+      <div class="center-content" id="content-area"></div>
+    </main>
   </div>
 
   <script type="module" src="../scripts/dashboard.js"></script>
