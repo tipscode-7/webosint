@@ -7,36 +7,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
-<body>
-  <!-- Переключатель языков (слева) -->
+<body class="auth-page">
   <div class="lang-switcher">
-    <button class="lang-btn" data-lang="ru">
-      <img src="../assets/ru-flag.png" alt="RU" width="15" height="10" />
-    </button>
-    <button class="lang-btn" data-lang="en">
-      <img src="../assets/en-flag.png" alt="EN" width="15" height="10" />
-    </button>
+    <button class="lang-btn" data-lang="ru"><img src="../assets/ru-flag.png" alt="RU" width="15" height="10" /></button>
+    <button class="lang-btn" data-lang="en"><img src="../assets/en-flag.png" alt="EN" width="15" height="10" /></button>
   </div>
-
-  <!-- Кнопка выхода (справа) -->
-  <button class="logout-top-btn" id="logoutTopBtn">
-    <i class="fas fa-sign-out-alt"></i>
-  </button>
 
   <div class="wrapper pricing-wrapper">
     <div class="container pricing-container">
-      <div class="logo">
-        <img src="../assets/logo.png" alt="Логотип проекта" />
-      </div>
-
+      <div class="logo"><img src="../assets/logo.png" alt="Логотип проекта" /></div>
       <div class="pricing-grid">
-        <!-- Карточка: Месяц -->
         <div class="pricing-card-large">
           <div class="card-image-large" style="background-image: url('../assets/mes.png');">
             <button class="card-btn-large" data-plan="1m">Подключить за 499₽ В месяц</button>
           </div>
         </div>
-        <!-- Карточка: Год -->
         <div class="pricing-card-large">
           <div class="card-image-large" style="background-image: url('../assets/god.png');">
             <button class="card-btn-large" data-plan="1y">Подключить за 4999₽ В год</button>
@@ -44,7 +29,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer">
       <div class="footer-content">
         <span class="copyright">2026 Jeos. All rights reserved.</span>
@@ -56,7 +40,6 @@
       </div>
     </div>
   </div>
-
   <script type="module" src="../scripts/pricing.js"></script>
 </body>
 </html>

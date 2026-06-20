@@ -526,7 +526,7 @@ button.register-btn:active {
   color: #aaa;
 }
 
-/* Специальные цвета для реакций при наведении (или можно сделать активными) */
+/* Специальные цвета для реакций при наведении */
 .reaction-btn[data-reaction="like"]:hover { color: #4caf50; }
 .reaction-btn[data-reaction="dislike"]:hover { color: #f44336; }
 .reaction-btn[data-reaction="fire"]:hover { color: #ff9800; }
@@ -578,14 +578,15 @@ button.register-btn:active {
   box-shadow: 0 0 0 2px #6D6868;
 }
 
-/* Переключатель языков */
+/* Переключатель языков (левый верхний угол, новый стиль) */
 .lang-switcher {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   display: flex;
   gap: 8px;
-  background: #000000;
+  background: #0B0E17;
+  border: 1px solid rgba(80, 68, 89, 0.4);
   padding: 5px 10px;
   border-radius: 8px;
   width: 60px;
@@ -615,7 +616,7 @@ button.register-btn:active {
   display: block;
 }
 
-/* Кнопка восстановления пароля */
+/* Кнопка восстановления пароля (общие стили, но переопределяются для auth-page) */
 button.forgot-btn {
   width: 200px;
   height: 40px;
@@ -663,17 +664,14 @@ button.forgot-btn:active {
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
-  /* Анимация свечения краёв */
   animation: glowPulse 3s infinite alternate;
 }
 
-/* Эффект при наведении */
 .pricing-card-large:hover {
   transform: scale(1.03);
-  animation-play-state: paused; /* останавливаем пульсацию, чтобы не конфликтовала */
+  animation-play-state: paused;
 }
 
-/* Сама картинка */
 .card-image-large {
   width: 100%;
   height: 100%;
@@ -685,12 +683,11 @@ button.forgot-btn:active {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 30px; /* отступ снизу для кнопки */
+  padding-bottom: 30px;
 }
 
-/* Кнопка внутри картинки */
 .card-btn-large {
-  width: 90%; /* отступы по бокам */
+  width: 90%;
   max-width: 400px;
   height: 50px;
   background: #000000;
@@ -714,31 +711,20 @@ button.forgot-btn:active {
   transform: scale(0.98);
 }
 
-/* Анимация пульсирующего свечения краёв */
 @keyframes glowPulse {
-0% {
-  box-shadow: 0 0 1px rgba(109, 104, 104, 0.15);
-}
-50% {
-  box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
-}
+  0% { box-shadow: 0 0 1px rgba(109, 104, 104, 0.15); }
+  50% { box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
 }
 
-/* Дополнительный эффект при наведении — более яркое свечение */
 .pricing-card-large:hover {
   animation: glowPulseHover 1.5s infinite alternate;
 }
 
 @keyframes glowPulseHover {
-0% {
-  box-shadow: 0 0 1px rgba(109, 104, 104, 0.15);
-}
-50% {
-  box-shadow: 0 0 2px rgba(248, 248, 248, 0.3);
-}
+  0% { box-shadow: 0 0 1px rgba(109, 104, 104, 0.15); }
+  50% { box-shadow: 0 0 2px rgba(248, 248, 248, 0.3); }
 }
 
-/* Адаптив для мобильных */
 @media (max-width: 500px) {
   .pricing-card-large {
     width: 100%;
@@ -751,25 +737,7 @@ button.forgot-btn:active {
   }
 }
 
-/* Верхняя панель: язык слева, выход справа */
-.lang-switcher {
-  position: fixed;
-  top: 20px;
-  left: 20px;          /* был right: 20px, теперь слева */
-  right: auto;
-  display: flex;
-  gap: 8px;
-  background: #000000;
-  padding: 5px 10px;
-  border-radius: 8px;
-  width: 60px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-/* Кнопка выхода (круглая, справа) */
+/* Кнопка выхода (круглая, справа) – используется только в дашборде */
 .logout-top-btn {
   position: fixed;
   top: 20px;
@@ -1011,7 +979,6 @@ button.forgot-btn:active {
   font-size: 20px;
 }
 
-/* Убираем стрелки для input type="number" (если используем) */
 .code-digit::-webkit-outer-spin-button,
 .code-digit::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -1056,7 +1023,7 @@ button.forgot-btn:active {
   color: #ffffff;
 }
 
-/* В main.css */
+/* ===== LOADER ===== */
 #loader-overlay {
   position: fixed;
   top: 0;
@@ -1085,4 +1052,125 @@ button.forgot-btn:active {
   100% { transform: rotate(360deg); }
 }
 
-/* Убираем дублирование .lang-switcher, если оно было раньше */
+/* ===== НОВЫЙ ДИЗАЙН АВТОРИЗАЦИИ (переопределение для страниц с классом auth-page) ===== */
+.auth-page {
+  background: #080B12;
+}
+.auth-page .wrapper,
+.auth-page .verify-wrapper,
+.auth-page .pricing-wrapper {
+  background: #080B12;
+}
+.auth-page .container,
+.auth-page .verify-container,
+.auth-page .pricing-container {
+  background: transparent;
+  border: none;
+}
+
+/* Поля ввода */
+.auth-page .input-group input,
+.auth-page .input-group input[type="email"],
+.auth-page .input-group input[type="password"],
+.auth-page .code-digit {
+  background: #0B0E17 !important;
+  border: 1px solid rgba(80, 68, 89, 0.4) !important;
+  color: #ffffff;
+}
+.auth-page .input-group input:focus,
+.auth-page .code-digit:focus {
+  border-color: rgba(80, 68, 89, 0.8) !important;
+  box-shadow: none;
+}
+.auth-page .input-group i {
+  color: rgba(255,255,255,0.3);
+}
+
+/* Кнопки соцсетей (Google, VK, Discord, Telegram) */
+.auth-page .social-login {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 24px;
+}
+
+.auth-page .social-icon {
+  width: 50px;
+  height: 50px;
+  background: #0B0E17;
+  border: 1px solid rgba(80, 68, 89, 0.4);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.auth-page .social-icon:hover {
+  background: linear-gradient(135deg, rgba(11, 14, 23, 0.2), rgba(90, 31, 172, 0.6));
+  border-color: rgba(80, 68, 89, 0.4);
+  transform: scale(1.05);
+}
+
+.auth-page .social-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0.8) saturate(0.5); /* чтобы иконки выглядели приглушённо, можно убрать */
+}
+
+/* Все кнопки на страницах авторизации – 323x51 */
+.auth-page button[type="submit"],
+.auth-page .forgot-btn,
+.auth-page .register-btn,
+.auth-page .verify-btn {
+  width: 323px;
+  height: 51px;
+  background: #0B0E17;
+  color: #6D6868;
+  border: 1px solid rgba(80, 68, 89, 0.4);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.auth-page button[type="submit"]:hover,
+.auth-page .forgot-btn:hover,
+.auth-page .register-btn:hover,
+.auth-page .verify-btn:hover {
+  background: linear-gradient(135deg, rgba(11, 14, 23, 0.2), rgba(90, 31, 172, 0.6));
+  color: #ffffff;
+  border-color: rgba(80, 68, 89, 0.4);
+}
+
+/* Чекбокс – квадрат внутри квадрата */
+.auth-page .checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  background: #0B0E17;
+  border: 1px solid rgba(80, 68, 89, 0.4);
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.auth-page .checkbox-group input[type="checkbox"]:checked {
+  background: #0B0E17;
+  border-color: rgba(80, 68, 89, 0.8);
+}
+.auth-page .checkbox-group input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: #5A1FAC;
+  border-radius: 2px;
+}
+
+/* Переключатель языков (уже переопределён выше) – фон и обводка заданы в общем классе .lang-switcher */
