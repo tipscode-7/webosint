@@ -1,24 +1,101 @@
-# Logs
-logs
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
 *.log
+*.sqlite3
+*.db
+.coverage
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+*.pot
+*.mo
+*.mo~
+.venv/
+
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# Node.js
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
+.pnpm-debug.log*
 lerna-debug.log*
+.eslintcache
+*.tsbuildinfo
+dist/
+.vite/
+.vitest/
 
-node_modules
-dist
-dist-ssr
-*.local
+# React / Vite
+react-frontend/dist/
+react-frontend/node_modules/
+react-frontend/.env.local
+react-frontend/.env.*.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.workspace
+*.iml
+.project
+.classpath
+.settings/
+
+# OS
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Misc
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+.next/
+out/
+public/assets/  # если ты хранишь изображения в src/assets, то public не нужен
+
+# Docker
+docker-compose.override.yml
+*.tar
+*.tar.gz
+
+# Backup files
+*.bak
+*.backup
+~$*

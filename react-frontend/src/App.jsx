@@ -25,8 +25,8 @@ function App() {
   return (
     <BrowserRouter>
       <LanguageProvider>
+        <SubscriptionProvider>
         <AuthProvider>
-          <SubscriptionProvider>
             <CookieConsent />
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -40,8 +40,8 @@ function App() {
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
-          </SubscriptionProvider>
         </AuthProvider>
+      </SubscriptionProvider>
       </LanguageProvider>
     </BrowserRouter>
   );
