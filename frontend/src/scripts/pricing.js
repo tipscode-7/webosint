@@ -64,6 +64,19 @@ if (logoutTopBtn) {
   });
 }
 
+import { showLoader, hideLoader } from './loader.js';
+
+// ... внутри обработчика регистрации
+try {
+  showLoader();
+  await api.post('/register/', { email, username, password });
+  hideLoader();
+  window.location.href = '/verify-code.html';
+} catch (err) {
+  hideLoader();
+  alert('Ошибка регистрации');
+}
+
 langBtns.forEach(btn => {
   btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
 });

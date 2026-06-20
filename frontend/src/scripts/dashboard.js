@@ -324,6 +324,19 @@ function addConsoleMessage(text) {
   output.scrollTop = output.scrollHeight;
 }
 
+import { showLoader, hideLoader } from './loader.js';
+
+// ... внутри обработчика регистрации
+try {
+  showLoader();
+  await api.post('/register/', { email, username, password });
+  hideLoader();
+  window.location.href = '/verify-code.html';
+} catch (err) {
+  hideLoader();
+  alert('Ошибка регистрации');
+}
+
 // --- Переключение вкладок ---
 const menuBtns = document.querySelectorAll('.menu-btn');
 const contentArea = document.getElementById('content-area');

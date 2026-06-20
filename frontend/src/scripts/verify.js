@@ -90,6 +90,23 @@ function startTimer() {
   }, 1000);
 }
 
+import { showLoader, hideLoader } from './loader.js';
+
+// При отправке формы:
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  // ...
+  try {
+    showLoader();
+    const res = await api.post('/verify-code/', { code });
+    hideLoader();
+    // ...
+  } catch (err) {
+    hideLoader();
+    // ошибка
+  }
+});
+
 // При клике на "Отправить повторно"
 resendLink.addEventListener('click', () => {
   // Здесь запрос на повторную отправку кода
