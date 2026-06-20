@@ -79,6 +79,7 @@ form {
   width: 100%;
 }
 
+/* общие стили для полей (переопределяются для auth-page) */
 input[type="email"],
 input[type="password"] {
   width: 323px;
@@ -642,7 +643,7 @@ button.register-btn:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #080B12; /* чтобы выделялся на фоне */
+  border: 2px solid #080B12;
 }
 
 /* Версия внизу */
@@ -672,7 +673,42 @@ button.register-btn:active {
   align-items: center;
 }
 
-/* Переключатель языков (левый верхний угол, новый стиль) */
+/* ===== ОБЩИЕ СТИЛИ ДЛЯ .INPUT-GROUP (иконки слева) ===== */
+.input-group {
+  position: relative;
+  width: 323px;
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  position: absolute;
+  left: 16px;
+  color: #6D6868;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 2; /* чтобы иконка была поверх поля */
+}
+
+.input-group input {
+  width: 100%;
+  height: 51px;
+  padding: 0 18px 0 50px;
+  background: #000000;
+  border: none;
+  border-radius: 10px;
+  color: #6D6868;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px #6D6868;
+}
+
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (левый верхний угол) ===== */
 .lang-switcher {
   position: fixed;
   top: 20px;
@@ -710,7 +746,7 @@ button.register-btn:active {
   display: block;
 }
 
-/* Кнопка восстановления пароля (общие стили, но переопределяются для auth-page) */
+/* Кнопка восстановления пароля */
 button.forgot-btn {
   width: 200px;
   height: 40px;
@@ -733,132 +769,189 @@ button.forgot-btn:active {
   transform: scale(0.98);
 }
 
-/* ===== PRICING (две большие карточки) ===== */
-.pricing-wrapper {
-  background: #0d0d0d;
+/* ===== NEW PRICING PAGE ===== */
+.pricing-new {
+  background: #080B12;
 }
 
-.pricing-container {
-  max-width: 1200px;
-  width: 100%;
-}
-
-.pricing-grid {
+.pricing-wrapper-new {
+  max-width: 1865px;
+  margin: 0 auto;
+  padding: 80px 20px 40px 20px;   /* ← padding-top вместо margin-top */
+  background: #080B12;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  margin: 30px 0;
+  flex-direction: column;
+  height: auto;
+  min-height: 100vh;              /* можно оставить, чтобы страница была на всю высоту */
 }
 
-.pricing-card-large {
-  width: 457px;
-  height: 457px;
-  border-radius: 40px;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease;
-  animation: glowPulse 3s infinite alternate;
-}
-
-.pricing-card-large:hover {
-  transform: scale(1.03);
-  animation-play-state: paused;
-}
-
-.card-image-large {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  border-radius: 40px;
+/* Приветственный блок */
+.welcome-block {
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+  background: #0B0E17;
+  border-radius: 20px;
+  padding: 30px 40px;
+  margin-bottom: 40px;
+  min-height: 255px;
 }
 
-.card-btn-large {
-  width: 90%;
-  max-width: 400px;
-  height: 50px;
-  background: #000000;
+.welcome-text {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.welcome-text h1 {
+  font-size: 30px;
+  font-weight: 400;
   color: #ffffff;
-  border: none;
-  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.welcome-text h1 .username-highlight {
+  color: #5A1FAC;
+}
+
+.welcome-desc {
   font-size: 15px;
+  color: #7E7E7E;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+.welcome-image {
+  flex-shrink: 0;
+}
+
+.welcome-image img {
+  width: 217px;
+  height: 217px;
+  object-fit: contain;
+}
+
+/* Сетка карточек – без скроллов, с переносом */
+.pricing-grid-new {
+  display: flex;
+  flex-wrap: wrap;             /* перенос на новую строку */
+  gap: 67px;                  /* уменьшил расстояние между карточками */
+  justify-content: center;    /* центрирование по горизонтали */
+  flex: 1;
+  align-items: stretch;       /* выравнивание по высоте */
+}
+
+.pricing-card-new {
+  flex: 0 1 405px;            /* ширина 405px, может сжиматься */
+  min-height: 477px;          /* минимальная высота, но не фиксированная */
+  background: #0B0E17;
+  border-radius: 20px;
+  padding: 24px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.2s;
+  border: 1px solid rgba(80, 68, 89, 0.3);
+}
+
+.pricing-card-new:hover {
+  transform: translateY(-6px);
+}
+
+.card-top {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.card-top h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.card-body {
+  flex: 1;
+  width: 100%;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+.card-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #b0b0b0;
+  text-align: center;
+  white-space: normal;
+  margin: 0;
+}
+
+.card-footer {
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.subscribe-btn {
+  width: 100%;                /* кнопка растягивается на всю ширину карточки */
+  max-width: 323px;
+  height: 51px;
+  background: #0B0E17;
+  border: 1px solid rgba(80, 68, 89, 0.4);
+  border-radius: 10px;
+  color: #6D6868;
+  font-size: 16px;
   font-weight: 400;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.card-btn-large:hover {
-  background: #1a1a1a;
-  transform: scale(1.02);
-}
-
-.card-btn-large:active {
-  transform: scale(0.98);
-}
-
-@keyframes glowPulse {
-  0% { box-shadow: 0 0 1px rgba(109, 104, 104, 0.15); }
-  50% { box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
-}
-
-.pricing-card-large:hover {
-  animation: glowPulseHover 1.5s infinite alternate;
-}
-
-@keyframes glowPulseHover {
-  0% { box-shadow: 0 0 1px rgba(109, 104, 104, 0.15); }
-  50% { box-shadow: 0 0 2px rgba(248, 248, 248, 0.3); }
-}
-
-@media (max-width: 500px) {
-  .pricing-card-large {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-  .card-btn-large {
-    font-size: 16px;
-    height: 45px;
-  }
-}
-
-/* Кнопка выхода (круглая, справа) – используется только в дашборде */
-.logout-top-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #000000;
+.subscribe-btn:hover {
+  background: linear-gradient(135deg, rgba(11, 14, 23, 0.2), rgba(90, 31, 172, 0.6));
   color: #ffffff;
-  border: none;
-  border-radius: 20%;
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, transform 0.2s;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border-color: rgba(80, 68, 89, 0.4);
 }
 
-.logout-top-btn:hover {
-  background: #1a1a1a;
-  transform: scale(1.05);
+/* Декоративные картинки earth (без изменений) */
+.earth-deco {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  opacity: 0.15;
+  pointer-events: none;
+  object-fit: contain;
 }
 
-.logout-top-btn:active {
-  transform: scale(0.95);
+.card-day .earth-deco {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 140px;
+}
+
+.card-week .earth-deco {
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 130px;
+  height: 130px;
+}
+
+.card-month .earth-deco {
+  left: -30px;
+  top: -30px;
+  width: 130px;
+  height: 130px;
+}
+
+.card-year .earth-deco {
+  right: -30px;
+  bottom: -30px;
+  width: 130px;
+  height: 130px;
 }
 
 /* ===== SEARCH PAGE ===== */
@@ -1176,8 +1269,11 @@ button.forgot-btn:active {
   border-color: rgba(80, 68, 89, 0.8) !important;
   box-shadow: none;
 }
+
+/* Иконки в полях ввода — переопределяем цвет и z-index */
 .auth-page .input-group i {
-  color: rgba(255,255,255,0.3);
+  color: #7E7E7E !important;   /* делаем иконки заметными */
+  z-index: 2;
 }
 
 /* Кнопки соцсетей (Google, VK, Discord, Telegram) */
@@ -1211,7 +1307,7 @@ button.forgot-btn:active {
   width: 24px;
   height: 24px;
   object-fit: contain;
-  filter: brightness(0.8) saturate(0.5); /* чтобы иконки выглядели приглушённо, можно убрать */
+  filter: brightness(0.8) saturate(0.5);
 }
 
 /* Все кнопки на страницах авторизации – 323x51 */
@@ -1266,5 +1362,3 @@ button.forgot-btn:active {
   background: #5A1FAC;
   border-radius: 2px;
 }
-
-/* Переключатель языков (уже переопределён выше) – фон и обводка заданы в общем классе .lang-switcher */

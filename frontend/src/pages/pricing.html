@@ -3,43 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Выбор подписки</title>
+  <title>Подписки</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
-<body class="auth-page">
+<body class="auth-page pricing-new">
   <div class="lang-switcher">
     <button class="lang-btn" data-lang="ru"><img src="../assets/ru-flag.png" alt="RU" width="15" height="10" /></button>
     <button class="lang-btn" data-lang="en"><img src="../assets/en-flag.png" alt="EN" width="15" height="10" /></button>
   </div>
 
-  <div class="wrapper pricing-wrapper">
-    <div class="container pricing-container">
-      <div class="logo"><img src="../assets/logo.png" alt="Логотип проекта" /></div>
-      <div class="pricing-grid">
-        <div class="pricing-card-large">
-          <div class="card-image-large" style="background-image: url('../assets/mes.png');">
-            <button class="card-btn-large" data-plan="1m">Подключить за 499₽ В месяц</button>
-          </div>
-        </div>
-        <div class="pricing-card-large">
-          <div class="card-image-large" style="background-image: url('../assets/god.png');">
-            <button class="card-btn-large" data-plan="1y">Подключить за 4999₽ В год</button>
-          </div>
-        </div>
+  <div class="pricing-wrapper-new">
+    <div class="welcome-block">
+      <div class="welcome-text">
+        <h1>Добро пожаловать, <span class="username-highlight">Иван Петров</span></h1>
+        <p class="welcome-desc">
+          Jeos — Платформа для поиска и анализа разной информации о человеке и его деятельности из открытых источников.
+        </p>
+      </div>
+      <div class="welcome-image">
+        <img src="../assets/earth.png" alt="Earth" />
       </div>
     </div>
-    <div class="footer">
-      <div class="footer-content">
-        <span class="copyright">2026 Jeos. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="/terms.html">Terms of Use</a>
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/contact.html">Contact Us</a>
+
+    <div class="pricing-grid-new">
+      <div class="pricing-card-new card-day">
+        <div class="card-top"><h2>Доступ на день</h2></div>
+        <div class="card-body">
+          <p class="card-description">
+            🔍 Открой мир, скрытый за пикселями. Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый.<br /><br />
+            Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый. Больше никакой слепоты — только чистая, структурированная информация.<br /><br />
+            🚀 Молниеносный парсинг<br />
+            🕵️ Глубокая аналитика связей<br />
+            📊 Эксклюзивные дашборды<br />
+            🔒 Приватность и анонимность<br /><br />
+            Стань детективом нового поколения. 👁️
+          </p>
         </div>
+        <div class="card-footer">
+          <button class="subscribe-btn" data-plan="day">Приобрести за 2999₽</button>
+        </div>
+        <img src="../assets/earth.png" alt="" class="earth-deco deco-top" />
+      </div>
+
+      <div class="pricing-card-new card-week">
+        <div class="card-top"><h2>Доступ на неделю</h2></div>
+        <div class="card-body">
+          <p class="card-description">
+            🔍 Открой мир, скрытый за пикселями. Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый.<br /><br />
+            Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый. Больше никакой слепоты — только чистая, структурированная информация.<br /><br />
+            🚀 Молниеносный парсинг<br />
+            🕵️ Глубокая аналитика связей<br />
+            📊 Эксклюзивные дашборды<br />
+            🔒 Приватность и анонимность<br /><br />
+            Стань детективом нового поколения. 👁️
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="subscribe-btn" data-plan="week">Приобрести за 4999₽</button>
+        </div>
+        <img src="../assets/earth.png" alt="" class="earth-deco deco-left" />
+      </div>
+
+      <div class="pricing-card-new card-month">
+        <div class="card-top"><h2>Доступ на месяц</h2></div>
+        <div class="card-body">
+          <p class="card-description">
+            🔍 Открой мир, скрытый за пикселями. Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый.<br /><br />
+            Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый. Больше никакой слепоты — только чистая, структурированная информация.<br /><br />
+            🚀 Молниеносный парсинг<br />
+            🕵️ Глубокая аналитика связей<br />
+            📊 Эксклюзивные дашборды<br />
+            🔒 Приватность и анонимность<br /><br />
+            Стань детективом нового поколения. 👁️
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="subscribe-btn" data-plan="month">Приобрести за 9999₽</button>
+        </div>
+        <img src="../assets/earth.png" alt="" class="earth-deco deco-top-left" />
+      </div>
+
+      <div class="pricing-card-new card-year">
+        <div class="card-top"><h2>Доступ на год</h2></div>
+        <div class="card-body">
+          <p class="card-description">
+            🔍 Открой мир, скрытый за пикселями. Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый.<br /><br />
+            Мы превращаем хаос данных в стройную картину мира. С нашей подпиской ты получишь ключи к цифровому следу, который оставляет каждый. Больше никакой слепоты — только чистая, структурированная информация.<br /><br />
+            🚀 Молниеносный парсинг<br />
+            🕵️ Глубокая аналитика связей<br />
+            📊 Эксклюзивные дашборды<br />
+            🔒 Приватность и анонимность<br /><br />
+            Стань детективом нового поколения. 👁️
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="subscribe-btn" data-plan="year">Приобрести за 19999₽</button>
+        </div>
+        <img src="../assets/earth.png" alt="" class="earth-deco deco-right-bottom" />
       </div>
     </div>
   </div>
+
   <script type="module" src="../scripts/pricing.js"></script>
 </body>
 </html>
