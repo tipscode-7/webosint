@@ -1547,3 +1547,66 @@ button.forgot-btn:active {
 .contact-note p:last-child {
   margin-bottom: 0;
 }
+
+/* ===== COOKIE CONSENT BANNER ===== */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0B0E17;
+  border-top: 1px solid rgba(80, 68, 89, 0.4);
+  padding: 12px 20px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+}
+
+.cookie-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.cookie-content p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin: 0;
+  text-align: center;
+}
+
+.cookie-content p a {
+  color: #5A1FAC;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.cookie-content p a:hover {
+  color: #7a2fcc;
+}
+
+#cookie-accept-btn {
+  width: 120px;
+  height: 36px;
+  background: #5A1FAC;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+#cookie-accept-btn:hover {
+  background: #6b2ac4;
+}
+#cookie-accept-btn:active {
+  transform: scale(0.96);
+}

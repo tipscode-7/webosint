@@ -199,3 +199,31 @@ if (forgotForm) {
     }
   });
 }
+
+// --- COOKIE CONSENT ---
+function initCookieConsent() {
+  // Проверяем, есть ли уже согласие
+  if (localStorage.getItem('cookie_consent') === 'true') {
+    return; // уже принял, ничего не показываем
+  }
+
+  // Создаём баннер
+  const banner = document.createElement('div');
+  banner.id = 'cookie-consent-banner';
+  banner.innerHTML = `
+    <div class="cookie-content">
+      <p>Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с нашей <a href="/privacy-policy.html">Политикой конфиденциальности</a>.</p>
+      <button id="cookie-accept-btn">Принять</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  // Обработчик на кнопку "Принять"
+  document.getElementById('cookie-accept-btn').addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'true');
+    banner.style.display = 'none';
+  });
+}
+
+// Запускаем инициализацию после загрузки DOM
+document.addEventListener('DOMContentLoaded', initCookieConsent);
