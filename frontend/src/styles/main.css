@@ -943,4 +943,117 @@ button.forgot-btn:active {
   color: #ffffff;
 }
 
+/* ===== VERIFY CODE PAGE ===== */
+.verify-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0d0d0d;
+  padding: 20px;
+}
+
+.verify-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 40px 30px;
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+
+.verify-container .logo {
+  margin-bottom: 30px;
+}
+
+.verify-container h2 {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.verify-sub {
+  color: #6D6868;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.code-digit {
+  width: 70px;
+  height: 90px;
+  background: #000000;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.code-digit:focus {
+  border-color: #6D6868;
+  box-shadow: 0 0 0 2px rgba(109,104,104,0.3);
+}
+
+.code-digit::placeholder {
+  color: #6D6868;
+  font-size: 20px;
+}
+
+/* Убираем стрелки для input type="number" (если используем) */
+.code-digit::-webkit-outer-spin-button,
+.code-digit::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.code-digit {
+  -moz-appearance: textfield;
+}
+
+.verify-btn {
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  background: #000000;
+  color: #6D6868;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 20px;
+}
+.verify-btn:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.verify-bottom {
+  color: #6D6868;
+  font-size: 14px;
+}
+.verify-bottom .timer {
+  display: inline-block;
+}
+.verify-bottom .resend-link {
+  color: #6D6868;
+  text-decoration: underline;
+  cursor: pointer;
+  display: none;
+}
+.verify-bottom .resend-link:hover {
+  color: #ffffff;
+}
+
 /* Убираем дублирование .lang-switcher, если оно было раньше */

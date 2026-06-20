@@ -56,5 +56,10 @@ module.exports = {
   filename: 'pricing.html',
   chunks: ['main'],
 }),
+new HtmlWebpackPlugin({
+  template: './src/pages/verify-code.html',
+  filename: 'verify-code.html',
+  chunks: ['main'],
+}),
   ],
 };

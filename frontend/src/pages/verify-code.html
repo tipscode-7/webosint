@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подтверждение кода</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <div class="verify-wrapper">
+    <div class="verify-container">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Логотип проекта" />
+      </div>
+      <h2>Введите код подтверждения</h2>
+      <p class="verify-sub">Мы отправили 4-значный код на вашу почту</p>
+
+      <form id="verifyForm" autocomplete="off">
+        <div class="code-inputs">
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" required />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" required />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" required />
+          <input type="text" class="code-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" required />
+        </div>
+        <button type="submit" class="verify-btn">Подтвердить</button>
+      </form>
+
+      <div class="verify-bottom">
+        <span class="timer">Отправить повторно через <span id="timer">60</span> сек</span>
+        <a href="/login.html" class="resend-link" id="resendLink" style="display:none;">Отправить повторно</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../scripts/verify.js"></script>
+</body>
+</html>
