@@ -42,7 +42,7 @@ const Register = () => {
 
   const t = texts[lang] || texts.ru;
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     if (!agree) {
       alert('Вы должны принять пользовательское соглашение');
@@ -56,7 +56,8 @@ const Register = () => {
       showLoader();
       await api.post('/register/', { email, username, password });
       hideLoader();
-      navigate('/verify-code');
+      // ✅ ПЕРЕНАПРАВЛЯЕМ НА СТРАНИЦУ ПОДПИСОК
+      navigate('/pricing');
     } catch (error) {
       hideLoader();
       alert('Ошибка регистрации: ' + (error.response?.data?.detail || 'Неизвестная ошибка'));

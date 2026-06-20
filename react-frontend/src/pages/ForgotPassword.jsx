@@ -11,13 +11,11 @@ const ForgotPassword = () => {
 
   const texts = {
     ru: {
-      title: 'Восстановление пароля',
       emailPlaceholder: 'Введите email...',
       submitBtn: 'Восстановить пароль',
       backLink: 'Вернуться ко входу',
     },
     en: {
-      title: 'Password recovery',
       emailPlaceholder: 'Enter email...',
       submitBtn: 'Recover password',
       backLink: 'Back to login',

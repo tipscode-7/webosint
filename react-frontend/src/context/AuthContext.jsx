@@ -1,58 +1,56 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import api from '../services/api';
+import { useSubscription } from './SubscriptionContext';
 
-// Создаём контекст
 const AuthContext = createContext();
 
-// Хук для использования контекста
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [accessToken, setAccessToken] = useState(localStorage.getItem('access_token'));
+  const { updateSubscription } = useSubscription();
 
-  // При монтировании проверяем токен и получаем профиль
   useEffect(() => {
-    const loadUser = async () => {
-      if (accessToken) {
-        try {
-          const response = await api.get('/profile/');
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      api.get('/profile/')
+        .then(response => {
           setUser(response.data);
-        } catch (error) {
-          // Если токен невалиден, удаляем его
+          // Обновляем подписку в контексте
+          updateSubscription(response.data.subscription_type, response.data.subscription_until);
+        })
+        .catch(() => {
           localStorage.removeItem('access_token');
           localStorage.removeItem('refresh_token');
-          setAccessToken(null);
-        }
-      }
+        })
+        .finally(() => setLoading(false));
+    } else {
       setLoading(false);
-    };
-    loadUser();
-  }, [accessToken]);
+    }
+  }, []);
 
-  // Функция входа
   const login = async (email, password) => {
     const response = await api.post('/login/', { email, password });
     const { access, refresh } = response.data;
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
-    setAccessToken(access);
-    // Получаем профиль после входа
+    // Получаем профиль
     const profile = await api.get('/profile/');
     setUser(profile.data);
+    updateSubscription(profile.data.subscription_type, profile.data.subscription_until);
     return profile.data;
   };
 
-  // Функция выхода
   const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
-    setAccessToken(null);
     setUser(null);
   };
 
-  const value = { user, loading, login, logout, accessToken };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

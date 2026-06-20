@@ -14,8 +14,8 @@ const Pricing = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-   if (!user) navigate('/login');
- }, [user, navigate]);
+    if (!user) navigate('/login');
+  }, [user, navigate]);
 
   const texts = {
     ru: {
@@ -50,7 +50,9 @@ const Pricing = () => {
     try {
       const res = await api.post('/subscribe/', { plan });
       if (res.data.success) {
+        // Обновляем подписку в контексте
         updateSubscription(res.data.subscription_type, res.data.subscription_until);
+        // Переходим в дашборд
         navigate('/dashboard');
       }
     } catch (error) {
