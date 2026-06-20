@@ -2,19 +2,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js', // единая точка входа для JS
+  mode: 'development',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    clean: true, // очищает dist перед сборкой
+    clean: true,
   },
   devServer: {
-    static: './dist',
+    static: {
+      directory: path.join(__dirname, 'src'), // ← теперь сервер видит src
+    },
     port: 3000,
     proxy: {
-      '/api': 'http://localhost:8000', // прокси на бэкенд
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
     },
-    historyApiFallback: true, // чтобы работал роутинг
+    historyApiFallback: true,
+    open: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -22,44 +30,43 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|ico)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]',
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/pages/login.html',
       filename: 'login.html',
-      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/register.html',
       filename: 'register.html',
-      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/dashboard.html',
       filename: 'dashboard.html',
-      chunks: ['main'],
     }),
-    // Можно оставить index.html как редирект (или просто как заглушку)
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/forgot-password.html',
       filename: 'forgot-password.html',
-      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-  template: './src/pages/pricing.html',
-  filename: 'pricing.html',
-  chunks: ['main'],
-}),
-new HtmlWebpackPlugin({
-  template: './src/pages/verify-code.html',
-  filename: 'verify-code.html',
-  chunks: ['main'],
-}),
+      template: './src/pages/pricing.html',
+      filename: 'pricing.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/verify-code.html',
+      filename: 'verify-code.html',
+    }),
   ],
 };
