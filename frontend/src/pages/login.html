@@ -39,5 +39,36 @@
     </div>
   </div>
   <script type="module" src="../scripts/auth.js"></script>
+
+// авторизация(пока, что временно так сделал)
+<script>
+document.getElementById('login-form')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:8000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('✅ Успешный вход!');
+            window.location.href = data.redirect || 'dashboard.html';
+        } else {
+            alert('❌ Ошибка: ' + data.detail);
+        }
+    } catch (error) {
+        alert('❌ Ошибка соединения с сервером');
+        console.error(error);
+    }
+});
+</script>
+
 </body>
 </html>
